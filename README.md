@@ -2,7 +2,7 @@
 
 #### 介绍
  1.项目为 充电桩 小程序项目，共享充电桩
- 
+
  2.项目地址：
     https://github.com/konglingyinxia/charging_pile_cloud
     
@@ -11,11 +11,13 @@
     https://www.showdoc.cc/360525838410865
     ![Image text](./img/1559196683(1).jpg)
     
+
     访问密码：123456
 
   
+
  3.项目角色级别 ： 
- 
+
      超级管理员 --区域代理 -- 普通用户
 
 ### 软件架构
@@ -27,9 +29,10 @@
     redis:5.0.5  开发 （ 3.0.503）
     mysql : 5.5
     jdk: 1.8
- 
+    
+
  2、项目目录结构：
- 
+
     common-server:各工具包，公共配置项
     
     doc： 存放项目文档   
@@ -53,28 +56,28 @@
     suda-common-entity:项目实体类
     
     suda-platform-web:项目控制层 业务层 数据层 
-    
+
   3、项目配置文件说明：
-  
+
     1、服务端口：server:port   redis   数据库 datasource
-    
+
    ![Image text](./img/1562032682(1).jpg)
-   
-   
+
+
     2、微信 小程序 配置 wx:pay 及自定义配置文件:my-configuration:
-    
+
    ![Image text](./img/1562032879(1).jpg)
-   
+
      自定义配置文件说明：
          uploadPath：为服务端存储图片路径
          imagePath：添加图片访问路径
          staticPageUrl：为服务端配置静态资源目录
-   ---
+---
     3、自定义配置类 方法为：suda-platform-web 服务
        com.suda.platform.common.interceptors.InterceptorConfig.addResourceHandlers
-        
+
    ![Image text](./img/1562033336(1).jpg)
-   
+
  4、项目登陆权限校验 (基于拦截器)
     
     使用技术：redis+JWT 
@@ -89,18 +92,18 @@
            未登录：拦截器中获取不到 token  信息 则用户未登陆
            单设备登录：请求头中获取的 token信息 与 redis 中存储的不一致 则用户已在其他地方登陆
            登陆超时：redis 中 获取不到用户的 token 信息，则用户登陆超时
-            
+
  ![Image text](./img/1562575615(1).jpg)       
-  
-    
-    
+
+
+​    
 
 #### 安装教程
 
     1、搭建服务器环境 
         1：到 `https://oneinstack.com/` 网站自定义安装包 （数据库，redis ,jdk ,nginx）
         2:服务器上执行从上面网站复制的 命令：
-        
+
    `wget -c http://mirrors.linuxeye.com/oneinstack-full.tar.gz && tar xzf oneinstack-full.tar.gz && ./oneinstack/install.sh --nginx_option 1 --jdk_option 2 --db_option 4 --dbinstallmethod 1 --dbrootpwd oneinstack --redis  --reboot`
         
     2、创建数据库，
@@ -113,9 +116,9 @@
             修改脚本名字为：charge.sh
             修改启动脚本为可执行：chmod 777  charge.sh
             修改脚本文件里启动项目名字： 为 change-1.0.jar
-     
+
    ![Image text](./img/1562034264(1).jpg)
-   
+
     4、项目打包成 jar 包 修改名字 为charge-1.0.jar  上传到服务器 /home/project/ 目录下 
          启动项目 ： ./charge.sh  restart 
          查看实时日志： tail -f ./log/catalina.out 
@@ -132,19 +135,20 @@
 #### 使用说明
 
     1、接入小程序，接入充电桩 UART1 通信 可正常使用
-    
-        
+
+
+​        
 
 #### 网站：
 
  - github 同步更新地址：
      [https://github.com/konglingyinxia/charging_pile_cloud](https://github.com/konglingyinxia/charging_pile_cloud)
-      
+     
  - gitee  同步更新地址：
      [https://gitee.com/kongling_admin/charging_pile_cloud](https://gitee.com/kongling_admin/charging_pile_cloud)
 
-    
-    
+
+​    
 
 
 #### 参与贡献
@@ -153,6 +157,6 @@
 #### 备注：
     1、后台超级管理员 admin 密码初始为：123456  
       前端加密 加密方式为：账号+*+输入密码 MD5加密 例：（MD5(admin*123456)）
-      
+
 
 
